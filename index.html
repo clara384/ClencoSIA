@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clenco Laundry</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Link ke CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <!-- Menambahkan logo di halaman web -->
+    <header>
+      <img src="images/logo.jpg" alt="Logo Aplikasi Akuntansi" width="150" />
+    </header>
+
+    <!-- Login Page -->
+    <div id="login-page" class="login-container">
+      <h2>Login</h2>
+      <form id="login-form" onsubmit="return login()">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <!-- Main Application Page -->
+    <div id="main-page" class="container" style="display: none">
+      <h1>Sistem Akuntansi</h1>
+      <nav>
+        <ul>
+          <li><a href="javascript:showPage('jurnal-umum')">Jurnal Umum</a></li>
+          <li>
+            <a href="javascript:showPage('jurnal-penyesuaian')"
+              >Jurnal Penyesuaian</a
+            >
+          </li>
+          <li><a href="javascript:showPage('buku-besar')">Buku Besar</a></li>
+          <li>
+            <a href="javascript:showPage('neraca-saldo')">Neraca Saldo</a>
+          </li>
+          <li>
+            <a href="javascript:showPage('laporan-laba-rugi')"
+              >Laporan Laba Rugi</a
+            >
+          </li>
+          <li><a href="javascript:logout()">Logout</a></li>
+        </ul>
+      </nav>
+
+      <!-- Jurnal Umum -->
+      <section id="jurnal-umum" style="display: none">
+        <h2>Jurnal Umum</h2>
+        <button onclick="tambahJurnal()">Tambah Transaksi</button>
+        <table id="tabel-jurnal-umum">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Deskripsi</th>
+              <th>Akun</th>
+              <th>Debit</th>
+              <th>Kredit</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Jurnal Penyesuaian -->
+      <section id="jurnal-penyesuaian" style="display: none">
+        <h2>Jurnal Penyesuaian</h2>
+        <button onclick="tambahPenyesuaian()">Tambah Penyesuaian</button>
+        <table id="tabel-jurnal-penyesuaian">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Deskripsi</th>
+              <th>Akun</th>
+              <th>Debit</th>
+              <th>Kredit</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Buku Besar -->
+      <section id="buku-besar" style="display: none">
+        <h2>Buku Besar</h2>
+        <div id="akun-list"></div>
+      </section>
+
+      <!-- Neraca Saldo -->
+      <section id="neraca-saldo" style="display: none">
+        <h2>Neraca Saldo</h2>
+        <table id="tabel-neraca-saldo">
+          <thead>
+            <tr>
+              <th>Akun</th>
+              <th>Debet</th>
+              <th>Kredit</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- Laporan Laba Rugi -->
+      <section id="laporan-laba-rugi" style="display: none">
+        <h2>Laporan Laba Rugi</h2>
+        <table id="tabel-laba-rugi">
+          <thead>
+            <tr>
+              <th>Nama Akun</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button onclick="downloadPDF()">Download Laporan Laba Rugi</button>
+      </section>
+    </div>
+    <script src="script.js"></script>
+    <!-- Link ke JS -->
+  </body>
+</html>
